@@ -2,7 +2,7 @@ let gulp = require('gulp');
 var eslint = require('gulp-eslint');
 let nodemon = require('gulp-nodemon');
 
-var jsFiles = [
+let jsFiles = [
   '*.js',
   'src/**/*.js'
 ];
@@ -41,13 +41,10 @@ let runApp = () => {
 let verifySyntax = () => {
   gulp.src(jsFiles)
     .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+    .pipe(eslint.format());
 }
 
 /*
   Execute both tasks in parallel
 */
-const gulpRun = gulp.parallel(runApp, verifySyntax);
-
-gulp.task('server', gulpRun);
+gulp.task('server', gulp.parallel(runApp, verifySyntax));
