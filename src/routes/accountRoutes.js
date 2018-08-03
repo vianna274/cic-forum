@@ -1,7 +1,7 @@
 let express = require('express');
-// let mongoClient = require('mongodb').MongoClient;
-// let objectId = require('mongodb').ObjectID;
 let router = express.Router();
+let mongoose = require('mongoose');
+let Account = require('../models/account.js');
 
 let user = {
   name: 'Leonardo',
@@ -25,19 +25,21 @@ let createRouter = (nav) => {
   });
 
   router.route('/')
-    .get((req, res) => {
+    .get(async (req, res) => {
       try {
-        // let url = 'DataBase url';
-        // let db = await mongoClient.connect(url);
-        // let collection = db.collection('something');
-        // let results = await collection.find({}).toArray();
+        let dbUrl = 'mongodb://localhost:27017/LEO_BANK';
+
+        await mongoose.connect(dbUrl);
+
+        let accounts = await Account.find({});
+        console.log(accounts);
         res.render('account', {
           title: 'My Account',
           nav: nav,
           results: fakeBD
         });
       } catch(err) {
-        console.log(err);
+        res.status(500).send(err);
       }
     });
 

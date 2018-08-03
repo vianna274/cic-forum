@@ -26,6 +26,7 @@ let nav = [
 ];
 
 let accountRouter = require('./src/routes/accountRoutes.js') (nav);
+let signupRouter = require('./src/routes/signupRoutes.js') (nav);
 
 /* Use everything from /public/ as static */
 app.use(express.static('public'));
@@ -40,6 +41,7 @@ app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
 app.use('/account', accountRouter);
+app.use('/signup', signupRouter);
 
 app.get('/', (req, res) => {
   res.render('index', {
