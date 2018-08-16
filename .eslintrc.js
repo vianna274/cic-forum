@@ -58,7 +58,7 @@ module.exports = {
             "error",
             "never"
         ],
-        "function-paren-newline": ["error", "consistent"],
+        "function-paren-newline": ["off", "consistent"],
         "generator-star-spacing": "error",
         "getter-return": "error",
         "global-require": "error",
@@ -178,7 +178,7 @@ module.exports = {
         "no-whitespace-before-property": "error",
         "no-with": "error",
         "nonblock-statement-body-position": "error",
-        "object-curly-newline": "error",
+        "object-curly-newline": "off",
         "object-curly-spacing": [
             "error",
             "never"

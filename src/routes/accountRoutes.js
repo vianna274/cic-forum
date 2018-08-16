@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 let Account = require('../models/account.js');
+let dbUrl = require('../configs/db.js').url;
 
 let user = {
   name: 'Leonardo',
@@ -27,9 +28,11 @@ let createRouter = (nav) => {
   router.route('/')
     .get(async (req, res) => {
       try {
-        let dbUrl = 'mongodb://localhost:27017/LEO_BANK';
+        let option = {
+          useNewUrlParser: true
+        };
 
-        await mongoose.connect(dbUrl);
+        await mongoose.connect(dbUrl, option);
 
         let accounts = await Account.find({});
         console.log(accounts);

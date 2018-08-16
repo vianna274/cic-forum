@@ -1,7 +1,7 @@
 <% include header %>
 <h1 class="page-title"> <%= title %></h1>
 <div class="offset-md-3 col-md-6">
-  <form action="" method="post" role="form" class="signupForm">
+  <form action="/account/signup" method="post" role="form" class="signupForm">
     <div class="form-group">
       <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
       <div class="validation"></div>
@@ -11,7 +11,27 @@
       <div class="validation"></div>
     </div>
     <div class="form-group">
+      <input type="text" name="gender" class="form-control" id="gender" placeholder="Gender" data-rule="minlen:4" data-msg="Male or Female">
+      <div class="validation"></div>
+    </div>
+    <div class="form-group">
+      <input type="text" name="age" class="form-control" id="age" placeholder="Age Just numbers" data-rule="minlen:2" data-msg="Just numbers">
+      <div class="validation"></div>
+    </div>
+    <div class="form-group">
+      <input type="text" name="course" class="form-control" id="course" placeholder="Course CiC or ECP" data-rule="minlen:3" data-msg="CiC or ECP">
+      <div class="validation"></div>
+    </div>
+    <div class="form-group">
+      <input type="text" name="semesterJoined" class="form-control" id="semesterJoined" placeholder="Semester Joined Like 2016.1" data-rule="minlen:3" data-msg="Like 2016.1">
+      <div class="validation"></div>
+    </div>
+    <div class="form-group">
       <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email">
+      <div class="validation"></div>
+    </div>
+    <div class="form-group">
+      <input type="username" class="form-control" name="username" id="username" placeholder="Username" data-rule="minlen:4" data-msg="Please enter a username">
       <div class="validation"></div>
     </div>
     <div class="form-group">
