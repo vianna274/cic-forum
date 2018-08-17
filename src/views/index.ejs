@@ -1,4 +1,7 @@
 <% include header %>
 <h1 class="page-title"> <%= title %></h1>
+<% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+<% } %>
 </body>
 <% include footer %>

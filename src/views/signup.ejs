@@ -1,6 +1,9 @@
 <% include header %>
 <h1 class="page-title"> <%= title %></h1>
 <div class="offset-md-3 col-md-6">
+  <% if (message.length > 0) { %>
+          <div class="alert alert-danger"><%= message %></div>
+  <% } %>
   <form action="/account/signup" method="post" role="form" class="signupForm">
     <div class="form-group">
       <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
@@ -23,6 +26,10 @@
       <div class="validation"></div>
     </div>
     <div class="form-group">
+      <input type="text" name="birthday" class="form-control" id="birthday" placeholder="Birthday like 26/03/1996" data-rule="minlen:3" data-msg="Your Birthday">
+      <div class="validation"></div>
+    </div>
+    <div class="form-group">
       <input type="text" name="semesterJoined" class="form-control" id="semesterJoined" placeholder="Semester Joined Like 2016.1" data-rule="minlen:3" data-msg="Like 2016.1">
       <div class="validation"></div>
     </div>
@@ -38,7 +45,7 @@
       <input type="password" class="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:4" data-msg="Please enter at least 8 letters/numbers">
       <div class="validation"></div>
     </div>
-    <div class="text-center"><button type="submit">Send Message</button></div>
+    <div class="text-center"><button type="submit">Sign Up</button></div>
   </form>
 </div>
 </body>

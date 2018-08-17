@@ -41,7 +41,7 @@ module.exports = {
         ],
         "no-console": ["error", { allow: ["warn", "error", "log"] }],
         "consistent-this": "off",
-        "curly": "error",
+        "curly": "off",
         "default-case": "error",
         "dot-location": "off",
         "dot-notation": [

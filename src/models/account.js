@@ -9,6 +9,7 @@ let accountSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   age: Number,
+  birthday: Date,
   course: String,
   semesterJoined: String,
   lastModified: Date,
