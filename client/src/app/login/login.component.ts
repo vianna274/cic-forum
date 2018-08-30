@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  data: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,11 +30,6 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-    // reset login status
-    // this.authenticationService.logout();
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
@@ -49,8 +45,10 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.dataService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
-      .subscribe(
-        data => { this.router.navigate([this.returnUrl]); },
+      .subscribe(resp => {
+          this.data = resp;
+          this.router.navigate(['/']);
+        },
         error => {
           this.alertService.error(error);
           this.loading = false;

@@ -35,4 +35,12 @@ export class DataService {
   delete(id: number) {
       return this.httpClient.delete('/api/users/' + id);
   }
+
+  auth() {
+    return this.httpClient.get('/api/auth');
+  }
+
+  logout() {
+    return this.httpClient.get('/api/logout');
+  }
 }

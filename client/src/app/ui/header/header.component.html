@@ -12,14 +12,36 @@
       </div>
     </section>
     <section class="menu-body">
-			<ul class="navbar-nav">
-				<li *ngFor="let page of menu" class="nav-item">
-					<a  class="nav-link" routerLink="{{ page.link }}"> {{ page.name}} </a>
-				</li>
-	    </ul>
+      <div class="row justify-content-center">
+        <div class="col-6">
+    			<ul class="navbar-nav">
+            <div *ngIf="user; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+      				<li *ngFor="let page of menu" class="nav-item">
+      					<a  (click)="toggleMenu()" class="nav-link pointer" routerLink="{{ page.link }}"> {{ page.name}} </a>
+      				</li>
+            </ng-template>
+            <ng-template #elseBlock>
+      				<li *ngFor="let page of menuNormal" class="nav-item">
+      					<a  (click)="toggleMenu()" class="nav-link" routerLink="{{ page.link }}"> {{ page.name}} </a>
+      				</li>
+            </ng-template>
+    	    </ul>
+        </div>
+      </div>
     </section>
     <section class="menu-footer">
-
+      <div *ngIf="user; then thenBlockMenuFooter"></div>
+      <ng-template #thenBlockMenuFooter>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <div (click)="logout()" class="logoutArea pointer">
+              <i class="fa fa-arrow-circle-right"></i>
+              <span>Logout</span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
     </section>
   </nav>
 </aside>
@@ -28,8 +50,7 @@
   <header [ngClass]="{'main__header-dark': darkModeActive}" class="main__header">
 
     <div class="left__section">
-      <span (click)="toggleMenu()">Menu</span>
-
+      <i (click)="toggleMenu()" class="fa fa-align-justify menu-icon pointer"></i>
       <svg class="logo__icon" viewBox="150.3 22.2 213.7 42.8">
         <path fill="#00ff9b" d="M150.3 65V22.2L193 65z" data-name="Path 1"/>
         <path fill="#003eff" d="M193.1 65h-42.8L193 22.2z" data-name="Path 2"/>

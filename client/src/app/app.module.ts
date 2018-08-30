@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './data.service';
+import { AlertService } from './alert.service';
 import { UiModule } from './ui/ui.module';
+import { SharedModule } from './shared/shared.module';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
@@ -14,7 +16,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,9 +24,13 @@ import { LoginComponent } from './login/login.component';
     UiModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

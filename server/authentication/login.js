@@ -20,19 +20,19 @@ let initPassport = (passport) => {
       try {
         let user = await User.findOne({'username': username});
         if (!user) {
-          return done(null, false,
-            req.flash('message', 'User Not found.'));
+          return done(null, false , {errorFront: 'User does not exist'});
         }
         if (!isValidPassword(user, password)) {
-          return done(null, false,
-            req.flash('message', 'Invalid Password'));
+          return done(null, false, {errorFront: 'Invalid password try again'} );
         }
-        console.log('Correct Password');
-        return done(null, user);
+        req.login(user, (error) => {
+          if (error) return done(null, false, {errorFront: 'Database Failed'});
+          console.log("Request Login supossedly successful.");
+          return done(null, user);
+        });
       } catch(err) {
         console.log(err);
-        return done(null, false,
-          req.flash('message', err));
+        return done(err, false);
       }
     }));
 
@@ -43,16 +43,18 @@ let initPassport = (passport) => {
           let user = await User.findOne({'username': username});
 
           if (user) {
-            console.log('User already exists');
-            return done(null, false, req.flash('message', 'User Already Exists'));
+            return done(null, false, {errorFront: 'User already exists'} );
           }
           let newUser = instantiateUser(username, password, req);
           await newUser.save();
-
-          return done(null, newUser);
+          req.login(user, (error) => {
+            if (error) return done(null, false, {errorFront: 'Database Failed'});
+            console.log("Request Register supossedly successful.");
+            return done(null, user);
+          });
         } catch (err) {
           console.log(err);
-          return done(null , false, req.flash('message', err));
+          return done(err, false);
         }
       };
       process.nextTick(await findOrCreateUser);

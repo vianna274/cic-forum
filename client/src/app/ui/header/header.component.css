@@ -51,7 +51,7 @@
   z-index: 10;
   height: 100%;
   width: 90%;
-  max-width: 26rem;
+  max-width: 20rem;
   background-color: white;
   box-shadow: 0 0 2rem rgba(0, 0, 255, 0.1);
   display: grid;
@@ -66,6 +66,11 @@
   transform: none;
 }
 
+.menu-icon {
+  font-size: 25px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
 .menu-header {
   background: linear-gradient(to right, #00FF9B, #5f84fb);
   display: grid;
@@ -110,6 +115,16 @@
 .menu-body {
   display: grid;
   width: 100%;
+}
+
+.menu-body .navbar-nav a {
+  font-size: 1.40rem;
+  letter-spacing: 0.5rem;
+  text-decoration: none;
+  background: linear-gradient(to right, #00FF9B, #5f84fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 550;
 }
 
 .profile-image__container {
@@ -213,14 +228,6 @@
 }
 
 /*SVGs*/
-.hamburger__icon {
-  position: relative;
-  z-index: 35;
-  height: 1rem;
-  padding: 0.5rem 1.5rem;
-  margin-right: 1rem;
-  cursor: pointer;
-}
 
 .logo__icon {
   height: 2rem;
@@ -232,14 +239,6 @@
 }
 
 .logo__text-dark {
-  fill: #ffff;
-}
-
-.hamburger__icon__fill {
-  fill: #2B244D;
-}
-
-.hamburger__icon__fill-dark {
   fill: #ffff;
 }
 
@@ -267,26 +266,17 @@
   transition: opacity 300ms linear;
 }
 
-/*
-================-
-    Footer
-================
-*/
-.main__footer {
-  background: transparent;
-  position: absolute;
-  bottom: 1rem;
-  left: 1.5rem;
-  z-index: 100;
-}
-
-.copyright__text {
-  letter-spacing: 0.1rem;
-  color: white;
-}
-
 @media only screen and (max-width: 300px) {
   .slide-menu {
     width: 100%;
   }
+}
+
+.menu-footer i {
+  font-size: 1.50rem;
+}
+
+.menu-footer span {
+  font-size: 1.40rem;
+  padding-left: 5px;
 }
