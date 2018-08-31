@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  data: any;
+  user: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,22 +37,20 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
+    if (this.loginForm.invalid)
       return;
-    }
 
     this.loading = true;
     this.dataService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(resp => {
-          this.data = resp;
-          this.router.navigate(['/']);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+        this.user = resp;
+        this.router.navigate(['/']);
+      },
+      error => {
+        this.alertService.error(error);
+        this.loading = false;
+      });
   }
 
 }

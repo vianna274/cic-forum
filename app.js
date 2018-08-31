@@ -7,7 +7,7 @@ let cookieParser = require('cookie-parser');
 let mongoose = require('mongoose');
 let path = require('path');
 
-let initPassport = require('./server/authentication/login.js');
+let initPassport = require('./server/authentication/auth-strategies.js');
 let dbConfig = require('./server/configs/db.js');
 
 let app = express();
@@ -34,7 +34,7 @@ app.use(passport.session());
 app.use(flash());
 
 
-let apiRouter = require('./server/routes/apiRoutes.js') (passport);
+let apiRouter = require('./server/routes/api-routes.js') (passport);
 
 app.use('/api', apiRouter);
 

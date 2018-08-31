@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   menu: Object;
   menuNormal: Object;
   showMenu = false;
+  darkModeActive = false;
   user: any;
 
   constructor(
@@ -46,8 +47,8 @@ export class HeaderComponent implements OnInit {
           name: "Login"
         },
         {
-          link: "register",
-          name: "Register"
+          link: "signup",
+          name: "Sign Up"
         }
       ]
   }
@@ -55,6 +56,10 @@ export class HeaderComponent implements OnInit {
   toggleMenu() {
     this.showMenu = !this.showMenu;
     this.auth();
+  }
+
+  modeToggleSwitch() {
+    this.darkModeActive = !this.darkModeActive
   }
 
   logout() {
@@ -73,7 +78,7 @@ export class HeaderComponent implements OnInit {
       .pipe(first())
       .subscribe(resp => {
         this.user = resp;
-        this.alertService.success(  this.user);
+        this.alertService.success(this.user);
       },
       error => {
         this.alertService.error(error);

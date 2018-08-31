@@ -36,7 +36,7 @@ let initPassport = (passport) => {
       }
     }));
 
-  passport.use('signup', new LocalStrategy({passReqToCallback: true},
+  passport.use('register', new LocalStrategy({passReqToCallback: true},
     async (req, username, password, done) => {
       let findOrCreateUser = async () => {
         try {

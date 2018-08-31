@@ -9,12 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
 
-  users: Object;
-
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getUsers().subscribe(data => this.users = data);
   }
 
 }

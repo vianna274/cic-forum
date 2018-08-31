@@ -36,24 +36,24 @@ export class RegisterComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-        this.submitted = true;
+    this.submitted = true;
 
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.dataService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
     }
+
+    this.loading = true;
+    this.dataService.register(this.registerForm.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.alertService.success('Registration successful', true);
+          this.router.navigate(['/login']);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
+  }
 }

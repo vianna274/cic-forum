@@ -6,10 +6,19 @@
         <img src="https://avatars2.githubusercontent.com/u/23269040?s=460&v=4" alt="profile-image"
              class="profile__image">
       </div>
-      <div class="account-details">
-        <span class="name__text">Leonardo Vianna</span>
-        <span class="email__text">lvfeiteira@inf.ufrgs.br</span>
-      </div>
+      <div *ngIf="user; then accountBlock else notAccountBlock"></div>
+      <ng-template #accountBlock>
+        <div class="account-details">
+          <span class="name__text"> {{ user.firstName }} {{ user.lastName }}</span>
+          <span class="email__text">{{ user.username }}</span>
+        </div>
+      </ng-template>
+      <ng-template #notAccountBlock>
+        <div class="account-details">
+          <span class="name__text">Ola, anonimo.</span>
+          <span routerLink="signup" class="email__text">Para visualizar o conteudo registre-se no forum.</span>
+        </div>
+      </ng-template>
     </section>
     <section class="menu-body">
       <div class="row justify-content-center">
