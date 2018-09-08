@@ -1,0 +1,37 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [mode]="over">
+    <mat-radio-group class="activated menu" [formControl]="mode">
+      <p class="d-flex flex-row-reverse">
+        <label><i (click)="sidenav.toggle()"class="fa fa-bars bar_menu"></i></label>
+      </p>
+      <div class="container">
+        <div class="d-flex justify-content-center ">
+          <div class="d-flex flex-column">
+            <div class="flex-row "><img class="profile_image" src="https://avatars2.githubusercontent.com/u/23269040?s=460&v=4" alt="Profile Image"></div>
+            <div class="flex-row "><p class="profile_name">Leonardo Vianna</p></div>
+            <div class="flex-row "><p class="profile_posts">54 posts</p></div>
+            <mat-divider></mat-divider>
+            <div *ngIf="user; else normalMenuBlock">
+              <ul *ngFor="let page of menu">
+                <li (click)="sidenav.toggle()" class="menu_item"><a routerLink="{{ page.link }}"> {{ page.name }}</a></li>
+                <mat-divider></mat-divider>
+              </ul>
+            </div>
+            <ng-template #normalMenuBlock>
+              <ul *ngFor="let page of menuNormal">
+                <li (click)="sidenav.toggle()" class="menu_item"><a routerLink="{{ page.link }}"> {{ page.name }}</a></li>
+                <mat-divider></mat-divider>
+              </ul>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </mat-radio-group>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="header">
+    <p>
+      <label><i (click)="sidenav.toggle()"class="fa fa-bars bar_hidden"></i></label>
+    </p>
+  </mat-sidenav-content>
+</mat-sidenav-container>

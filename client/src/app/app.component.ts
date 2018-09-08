@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { DataService } from './data.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
 
-  constructor(private dataService: DataService) { }
+  constructor() { }
 
   ngOnInit() {
   }

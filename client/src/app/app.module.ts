@@ -4,14 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DataService } from './data.service';
-import { AlertService } from './alert.service';
-import { UiModule } from './ui/ui.module';
-import { SharedModule } from './shared/shared.module';
-import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { UiModule } from './modules/ui/ui.module';
+import { SharedModule } from './modules/shared/shared.module';
+import { CustomMaterialModule } from './modules/custom-material/custom-material.module';
+import { DataService } from 'src/app/services/data.service';
 
 @NgModule({
   declarations: [
@@ -21,17 +23,18 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
   ],
   imports: [
+    CustomMaterialModule,
     BrowserModule,
     HttpClientModule,
     UiModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    DataService,
-    AlertService
+    DataService
   ],
   bootstrap: [AppComponent]
 })

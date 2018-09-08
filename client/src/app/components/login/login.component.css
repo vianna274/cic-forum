@@ -1,0 +1,31 @@
+a, p {
+  text-align: center;
+}
+
+.login_text {
+  padding-top: 50px;
+  margin-top: 15vw;
+  font-size: 1.4rem;
+  color: black;
+  margin-bottom: 8vw;
+}
+
+.login_form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.full_width {
+  width: 100%;
+}
+
+.button_wrapper {
+  text-align: center;
+}
+
+.custom_button {
+  border: 1px solid black;
+  background: none;
+}
