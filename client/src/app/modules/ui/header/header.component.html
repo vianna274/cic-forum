@@ -7,17 +7,25 @@
       <div class="container">
         <div class="d-flex justify-content-center ">
           <div class="d-flex flex-column">
-            <div class="flex-row "><img class="profile_image" src="https://avatars2.githubusercontent.com/u/23269040?s=460&v=4" alt="Profile Image"></div>
-            <div class="flex-row "><p class="profile_name">Leonardo Vianna</p></div>
-            <div class="flex-row "><p class="profile_posts">54 posts</p></div>
-            <mat-divider></mat-divider>
             <div *ngIf="user; else normalMenuBlock">
+              <div class="flex-row "><img class="profile_image" src="https://avatars2.githubusercontent.com/u/23269040?s=460&v=4" alt="Profile Image"></div>
+              <div class="flex-row "><p class="profile_name">{{ user.firstName }} {{user.lastName}}</p></div>
+              <div class="flex-row "><p class="profile_posts">{{user.posts}} posts</p></div>
+              <mat-divider></mat-divider>
               <ul *ngFor="let page of menu">
                 <li (click)="sidenav.toggle()" class="menu_item"><a routerLink="{{ page.link }}"> {{ page.name }}</a></li>
                 <mat-divider></mat-divider>
               </ul>
+              <ul>
+                <li (click)="sidenav.toggle()" class="menu_item"><a (click)="sidenav.toggle();logout()">Logout</a></li>
+              </ul>
+              <mat-divider></mat-divider>
             </div>
             <ng-template #normalMenuBlock>
+              <div class="flex-row "><img class="profile_image" src="https://vignette.wikia.nocookie.net/rainbow7/images/5/5b/Jo_Hyun_Young_Mnet_official.jpg/revision/latest?cb=20100709184422" alt="Profile Image"></div>
+              <div class="flex-row "><p class="profile_name">Sign or create an account.</p></div>
+              <div class="flex-row "><p class="profile_posts"></p></div>
+              <mat-divider></mat-divider>
               <ul *ngFor="let page of menuNormal">
                 <li (click)="sidenav.toggle()" class="menu_item"><a routerLink="{{ page.link }}"> {{ page.name }}</a></li>
                 <mat-divider></mat-divider>

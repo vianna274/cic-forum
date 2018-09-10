@@ -1,3 +1,5 @@
+import { AuthService } from './auth/auth.service';
+import { AuthGuardService } from './auth/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,6 +16,7 @@ import { UiModule } from './modules/ui/ui.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { CustomMaterialModule } from './modules/custom-material/custom-material.module';
 import { DataService } from 'src/app/services/data.service';
+import { ForumModule } from './modules/forum/forum.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { DataService } from 'src/app/services/data.service';
     HomeComponent,
   ],
   imports: [
+    ForumModule,
     CustomMaterialModule,
     BrowserModule,
     HttpClientModule,
@@ -34,7 +38,9 @@ import { DataService } from 'src/app/services/data.service';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    DataService
+    DataService,
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

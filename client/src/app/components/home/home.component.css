@@ -1,16 +1,15 @@
 h2, p, a {
-    text-align: center;
+  text-align: center;
 }
 
 .home_title {
-   padding-top: 50px;
-    color: black;
-    font-weight: bold;
-    margin-top: 9.5vw;
-    margin-bottom: 16.5vw;
-    font-size: 1.8rem;
+  color: black;
+  font-weight: bold;
+  margin-top: 9.5vw;
+  margin-bottom: 16.5vw;
+  font-size: 1.8rem;
 }
 
 .home_text  {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }

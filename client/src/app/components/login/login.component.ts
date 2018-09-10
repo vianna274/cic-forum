@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -38,13 +40,14 @@ export class LoginComponent implements OnInit {
       return;
 
     this.loading = true;
-    this.dataService.login(this.f.username.value, this.f.password.value)
+    this.dataService.getUser(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(resp => {
         this.user = resp;
-        if (resp) {
-          this.router.navigate(['perfil']);
-          localStorage.setItem('currentUser', JSON.stringify(resp));
+        if (resp[0]) {
+          this.userService.insertUser(resp[0]);
+          this.userService.updateCurrentUser();
+          this.router.navigate(['/']);
         }
         else {
           this.loading = false;
@@ -54,6 +57,7 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
+        console.log(error);
         this.loading = false;
         this.submitted = false;
       });

@@ -1,5 +1,5 @@
 <app-header class="fixed-top"></app-header>
-<main class="main_container" (click)="toggleMenu()">
-  <router-outlet></router-outlet>
+<main class="main_container" [@routerAnimation]="getRouteAnimation(appOutlet)" (click)="toggleMenu()">
+  <router-outlet #appOutlet="outlet"></router-outlet>
 </main>
 <app-footer></app-footer>

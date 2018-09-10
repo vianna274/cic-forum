@@ -48,13 +48,13 @@
       "phone": "(51) 123-123-123"
     }
   ],
-  "profile": [
+  "users": [
     {
       "username" : "leonardo",
       "password" : "leoleo",
-      "name" : "Leonardo Vianna",
-      "rank" : "N O V A T O",
-      "neighborhood" : "Cristal"
+      "firstName" : "Leonardo",
+      "lastName" : "Feiteira",
+      "posts" : "56"
     }
   ]
 }

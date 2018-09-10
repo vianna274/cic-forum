@@ -44,8 +44,8 @@ mat-sidenav-content {
 }
 
 .profile_image {
-  width: 30vw;
-  height: 30vw;
+  width: 40vw;
+  height: auto;
   max-height: 200px;
   max-width: 200px;
   border: 1px solid black;
