@@ -10,7 +10,7 @@
             <div *ngIf="user; else normalMenuBlock">
               <div class="flex-row "><img class="profile_image" src="https://avatars2.githubusercontent.com/u/23269040?s=460&v=4" alt="Profile Image"></div>
               <div class="flex-row "><p class="profile_name">{{ user.firstName }} {{user.lastName}}</p></div>
-              <div class="flex-row "><p class="profile_posts">{{user.posts}} posts</p></div>
+              <div class="flex-row "><p class="profile_posts">{{user.posts.length}} posts</p></div>
               <mat-divider></mat-divider>
               <ul *ngFor="let page of menu">
                 <li (click)="sidenav.toggle()" class="menu_item"><a routerLink="{{ page.link }}"> {{ page.name }}</a></li>

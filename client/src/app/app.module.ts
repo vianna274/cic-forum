@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { RegisterComponent } from './components/register/register.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { UiModule } from './modules/ui/ui.module';
@@ -21,7 +21,7 @@ import { ForumModule } from './modules/forum/forum.module';
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
+    SignupComponent,
     LoginComponent,
     HomeComponent,
   ],

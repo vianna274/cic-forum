@@ -3,14 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
+import { User } from '../../models/user.model';
 
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   loading = false;
   submitted = false;
@@ -41,8 +42,16 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    let user = new User();
+    user.firstName = this.signupForm.value.firstName;
+    user.lastName = this.signupForm.value.lastName;
+    user.username = this.signupForm.value.username;
+    user.password = this.signupForm.value.password;
+    user.posts = [];
+    user.favoritePosts = [];
+
     this.loading = true;
-    this.dataService.register(this.signupForm.value)
+    this.dataService.registerUser(user)
       .pipe(first())
       .subscribe(
         data => {

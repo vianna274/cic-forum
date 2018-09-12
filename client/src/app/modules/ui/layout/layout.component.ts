@@ -1,6 +1,6 @@
-import { routerTransition } from './../../../router.animations';
 import { HeaderComponent } from './../header/header.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { routerTransition } from 'src/app/animations/router.animation';
 
 @Component({
   selector: 'app-layout',

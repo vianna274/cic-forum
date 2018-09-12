@@ -3,5 +3,6 @@
     <h2 class="title">SEMESTRES</h2>
   </div>
 </div>
-<app-forum-category></app-forum-category>
-<app-forum-category></app-forum-category>
+<div *ngFor="let semester of semesters">
+  <app-forum-category [semester] = "semester" [classes] = "classes"></app-forum-category>
+</div>

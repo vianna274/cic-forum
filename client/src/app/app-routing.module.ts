@@ -3,7 +3,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
@@ -19,8 +19,7 @@ const routes: Routes = [
     },
     {
       path: 'signup', 
-      component: RegisterComponent,
-      canActivate: [AuthGuardService],
+      component: SignupComponent,
       data: { animation: 'signup'}
     },
     {
@@ -31,7 +30,7 @@ const routes: Routes = [
     },
     {
       path: 'add', 
-      component: RegisterComponent
+      component: SignupComponent
     },
     {
       path: '**',

@@ -1,19 +1,17 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
-  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-      <p>{{node.name}}</p>
-    </mat-tree-node>
-
-    <mat-tree-node class="semester" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-      <button mat-icon-button matTreeNodeToggle
-              [attr.aria-label]="'toggle ' + node.filename">
-        <mat-icon class="mat-icon-rtl-mirror">
-          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-        </mat-icon>
-      </button>
-      <p>{{node.name}}</p>
-    </mat-tree-node>
-  </mat-tree>
+  <div class="d-flex flex-column align-items-center">
+    <div class="semester d-flex flex-row" (click)="toggle()">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{expanded ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+      <h2> {{ semester.name }} </h2>
+    </div>
+    <div class="d-flex flex-column classes">
+      <div *ngIf="expanded" [@subCategoryInOut]>
+        <div *ngFor="let class of classes">
+          <app-forum-sub-category [currentState]="toState" [class]="class"></app-forum-sub-category>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
