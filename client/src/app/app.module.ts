@@ -17,6 +17,11 @@ import { SharedModule } from './modules/shared/shared.module';
 import { CustomMaterialModule } from './modules/custom-material/custom-material.module';
 import { DataService } from 'src/app/services/data.service';
 import { ForumModule } from './modules/forum/forum.module';
+import { FriendsComponent } from './components/friends/friends.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,11 @@ import { ForumModule } from './modules/forum/forum.module';
     SignupComponent,
     LoginComponent,
     HomeComponent,
+    FriendsComponent,
+    FavoritesComponent,
+    NotificationsComponent,
+    MessagesComponent,
+    CreatePostComponent,
   ],
   imports: [
     ForumModule,

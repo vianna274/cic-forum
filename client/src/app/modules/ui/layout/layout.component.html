@@ -1,5 +1,23 @@
 <app-header class="fixed-top"></app-header>
-<main class="main_container" [@routerAnimation]="getRouteAnimation(appOutlet)" (click)="toggleMenu()">
+<div class="toggle-fab-off" *ngIf="fabTogglerState=='active'" (click)="onToggleFab()"></div>
+<div class="toggle-menu-off" *ngIf="header.sidenav.opened" (click)="toggleMenu()"></div>
+
+<main class="main-container" [@routerAnimation]="getRouteAnimation(appOutlet)">
   <router-outlet #appOutlet="outlet"></router-outlet>
 </main>
+<div class="fab-container">
+  <button mat-fab class="fab-toggler"
+          (click)="onToggleFab()">
+    <i class="material-icons" [@fabToggler]="{value: fabTogglerState}">add</i>
+  </button>
+  <div [@speedDialStagger]="buttons.length">
+    <button *ngFor="let btn of buttons"
+            mat-mini-fab
+            class="fab-secondary"
+            color="secondary"
+            (click)="onToggleFab()">
+      <i class="material-icons" routerLink="{{ btn.link }}">{{btn.icon}}</i>
+    </button>
+  </div>
 <app-footer></app-footer>
+</div>
