@@ -4,26 +4,22 @@ let session = require('express-session');
 let flash = require('connect-flash');
 let passport = require('passport');
 let cookieParser = require('cookie-parser');
-let mongoose = require('mongoose');
 let path = require('path');
 
-let initPassport = require('./server/authentication/auth-strategies.js');
-let dbConfig = require('./server/configs/db.js');
+// let initPassport = require('./server/authentication/auth-strategies.js');
 
 let app = express();
 
 let port = process.env.PORT || 3000;
 
-mongoose.connect(dbConfig.url, dbConfig.options)
 
 app.use(session({
   secret: 'mySecretKey',
   resave: true,
   saveUninitialized: false}
 ));
-initPassport(passport);
+// initPassport(passport);
 
-app.use(express.static(path.join(__dirname, 'client/dist/client/')));
 app.use(cookieParser());
 app.use(bodyParser.json()); // parse any request as a json
 app.use(bodyParser.urlencoded({extended: true})); // extended means a more complex parser algorithm
@@ -33,13 +29,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
-let apiRouter = require('./server/routes/api-routes.js') (passport);
-
-app.use('/api', apiRouter);
+require('./server/routes')(app);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/dist/client/index.html'));
+  res.status(200).send({
+    message: 'Welcome to the CiC Forum API!'
+  })
 });
 
 app.listen(port, (err) => {

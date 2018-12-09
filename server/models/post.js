@@ -1,20 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    username: {
+  const Post = sequelize.define('Post', {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    password: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {});
-  User.associate = function(models) {
-    User.hasMany(models.Post, {
+  Post.associate = function(models) {
+    Post.belongsTo(models.User, {
       foreignKey: 'userId',
-      as: 'userPosts',
+      onDelete: 'CASCADE'
     });
   };
-  return User;
+  return Post;
 };
