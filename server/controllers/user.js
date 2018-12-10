@@ -12,7 +12,7 @@ module.exports = {
       .findAll({
         include: [{
           model: Post,
-          as: 'userPosts'
+          as: 'posts'
         }]
       })
       .then(users => res.status(200).send(users))
@@ -24,7 +24,7 @@ module.exports = {
       let user = await User.findByPk(req.params.userId, {
         include: [{
           model: Post,
-          as: 'userPosts'
+          as: 'posts'
         }]
       });
 
@@ -45,7 +45,7 @@ module.exports = {
       let user = await Todo.findByPk(req.params.userId, {
         include: [{
           model: Post,
-          as: 'userPosts'
+          as: 'posts'
         }]
       });
 
@@ -72,6 +72,29 @@ module.exports = {
       }
       await user.destroy();
       return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send(err);
+    }
+  },
+
+  async signin(req, res) {
+    try {
+      let user = await User.findOne({
+        where: {
+          ...req.query
+        },
+        include: [{
+          model: Post,
+          as: 'posts'
+        }]
+      });
+
+      if(!user) {
+        return res.status(404).send({
+          message: 'User Not Registered'
+        });
+      }
+      return res.status(200).send(user);
     } catch (err) {
       return res.status(400).send(err);
     }

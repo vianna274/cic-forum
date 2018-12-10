@@ -3,7 +3,7 @@ const User = require('../models').User;
 
 module.exports = {
   create(req, res) {
-    return Post.create({ req..body })
+    return Post.create({ ...req.body })
       .then(post => res.status(201).send(post))
       .catch(err => res.status(400).send(err));
   },
@@ -29,7 +29,7 @@ module.exports = {
     } catch (err) {
       return res.status(400).send(err);
     }
-  }
+  },
 
   async update(req, res) {
     try {
@@ -41,12 +41,12 @@ module.exports = {
         });
       }
 
-      await post.update({ ..req.body });
+      await post.update({ ...req.body });
       return res.status(200).send(post);
     } catch (err) {
       return res.status(400).send(err);
     }
-  }
+  },
 
   async delete(req, res) {
     try {

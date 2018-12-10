@@ -4,7 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "sequelize db:migrate",
+    "populate": "sequelize db:seed:all",
+    "unpopulate": "sequelize db:seed:undo:all"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",

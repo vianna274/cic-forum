@@ -8,12 +8,25 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {});
   User.associate = function(models) {
     User.hasMany(models.Post, {
       foreignKey: 'userId',
-      as: 'userPosts',
+      as: 'posts',
+    });
+    User.belongsToMany(models.Post, {
+      through: 'FavoritePosts',
+      as: 'user',
+      foreignKey: 'userId'
     });
   };
   return User;

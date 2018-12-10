@@ -5,6 +5,7 @@ let flash = require('connect-flash');
 let passport = require('passport');
 let cookieParser = require('cookie-parser');
 let path = require('path');
+let cors = require('cors');
 
 // let initPassport = require('./server/authentication/auth-strategies.js');
 
@@ -28,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: true})); // extended means a more compl
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
+app.use(cors());
 require('./server/routes')(app);
 
 app.get('*', (req, res) => {

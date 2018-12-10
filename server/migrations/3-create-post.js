@@ -10,7 +10,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      title: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -33,6 +33,24 @@ module.exports = {
           model: 'Users',
           key: 'id',
           as: 'userId'
+        }
+      },
+      semesterId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Semesters',
+          key: 'id',
+          as: 'semesterId'
+        }
+      },
+      classId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Classes',
+          key: 'id',
+          as: 'classId'
         }
       },
     });
