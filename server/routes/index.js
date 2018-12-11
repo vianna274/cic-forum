@@ -1,5 +1,6 @@
 const userController = require('../controllers').user;
 const postController = require('../controllers').post;
+const semesterController = require('../controllers').semester;
 
 module.exports = (app) => {
   app.get('/api/signin', userController.signin);
@@ -15,4 +16,10 @@ module.exports = (app) => {
   app.get('/api/posts', postController.list);
   app.put('/api/post/:postId', postController.update);
   app.delete('/api/post/:postId', postController.delete);
+
+  app.post('/api/semester', semesterController.create);
+  app.get('/api/semester/:semesterId', semesterController.retrieve);
+  app.get('/api/semesters', semesterController.list);
+  app.put('/api/semester/:semesterId', semesterController.update);
+  app.delete('/api/semester/:semesterId', semesterController.delete);
 }
