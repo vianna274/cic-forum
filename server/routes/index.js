@@ -1,6 +1,7 @@
 const userController = require('../controllers').user;
 const postController = require('../controllers').post;
 const semesterController = require('../controllers').semester;
+const classController = require('../controllers')._class;
 
 module.exports = (app) => {
   app.get('/api/signin', userController.signin);
@@ -22,4 +23,10 @@ module.exports = (app) => {
   app.get('/api/semesters', semesterController.list);
   app.put('/api/semester/:semesterId', semesterController.update);
   app.delete('/api/semester/:semesterId', semesterController.delete);
+
+  app.post('/api/class', classController.create);
+  app.get('/api/class/:classId', classController.retrieve);
+  app.get('/api/classes', classController.list);
+  app.put('/api/class/:classId', classController.update);
+  app.delete('/api/class/:classId', classController.delete);
 }
